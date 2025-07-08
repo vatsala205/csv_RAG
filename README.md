@@ -6,8 +6,6 @@
 │   └── openai_rag.py
 ├── templates/
 │   └── index.html
-├── static/
-│   └── style.css
 ├── data/
 │   └── churn.csv
 ├── churn.db                ← SQLite database created from your CSV

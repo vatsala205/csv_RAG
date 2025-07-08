@@ -63,9 +63,31 @@ Only use column names from the schema. Always check for values like 'Yes'/'No' w
 
 
 def summarize_response(user_question, sql_query, result_rows):
-    # Simple summarization fallback
-    result_preview = str(result_rows[:3]) if result_rows else "No data returned."
+    if not result_rows:
+        return f"I looked into your question: '{user_question}', and the result returned no matching records."
+
+    # Simple count or aggregate result
+    if len(result_rows) == 1 and len(result_rows[0]) == 1:
+        col, val = list(result_rows[0].items())[0]
+        return f"The answer to your question \"{user_question}\" is **{val}**."
+
+    # If result is a list of similar entries (like filtering)
+    if len(result_rows) <= 5:
+        description = []
+        for i, row in enumerate(result_rows):
+            summary = ", ".join(f"{k}: {v}" for k, v in row.items())
+            description.append(f"{i + 1}. {summary}")
+        return (
+            f"I found the following results for your question: \"{user_question}\".\n\n"
+            + "\n".join(description)
+        )
+
+    # For longer result sets
     return (
-        f"For your question: '{user_question}', I generated this SQL:\n"
-        f"{sql_query}\nTop results:\n{result_preview}"
+        f"I found **{len(result_rows)}** records matching your query: \"{user_question}\". "
+        f"Here are a few examples:\n\n"
+        + "\n".join(
+            f"- " + ", ".join(f"{k}: {v}" for k, v in row.items())
+            for row in result_rows[:3]
+        )
     )
