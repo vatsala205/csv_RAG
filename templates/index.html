@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Customer RAG Chat</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #fafafa; }
+        input[type=text] { width: 60%; padding: 10px; margin-bottom: 10px; }
+        input[type=submit] { padding: 10px 20px; }
+        pre { background: #f4f4f4; padding: 12px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h2>📊 Ask About Customer Churn</h2>
+    <form method="post">
+        <input type="text" name="question" placeholder="e.g. How many customers have churned?" required>
+        <input type="submit" value="Ask">
+    </form>
+
+    {% if query %}
+        <h3>🔍 Generated SQL</h3>
+        <pre>{{ query }}</pre>
+    {% endif %}
+    {% if result %}
+        <h3>📋 Raw Result</h3>
+        <pre>{{ result }}</pre>
+    {% endif %}
+    {% if answer %}
+        <h3>🧠 Chatbot Response</h3>
+        <p>{{ answer }}</p>
+    {% endif %}
+</body>
+</html>
