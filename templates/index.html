@@ -25,6 +25,103 @@
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        body.dark-mode .container {
+            background: rgba(30, 30, 60, 0.95);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .form-container {
+            background: #2d3748;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode input[type=text] {
+            background: #4a5568;
+            border-color: #718096;
+            color: white;
+        }
+
+        body.dark-mode input[type=text]:focus {
+            background: #2d3748;
+            border-color: #4facfe;
+        }
+
+        body.dark-mode .collapsible-content {
+            background: #2d3748;
+            border-color: #4a5568;
+        }
+
+        body.dark-mode .examples-section {
+            background: #2d3748;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .example-item {
+            background: #4a5568;
+            border-color: #718096;
+        }
+
+        body.dark-mode .example-item:hover {
+            background: #68d391;
+            color: #1a202c;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #ccc;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: #4facfe;
+        }
+
+        .toggle-switch.active::before {
+            transform: translateX(30px);
         }
 
         .header {
@@ -103,6 +200,145 @@
 
         input[type=submit]:active {
             transform: translateY(0);
+        }
+
+        button[type=submit] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button[type=submit]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        button[type=submit]:active {
+            transform: translateY(0);
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffffff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading .loading-spinner {
+            display: inline-block;
+        }
+
+        .loading button[type=submit] {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Examples Section */
+        .examples-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .examples-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .example-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .example-item:hover {
+            background: #4facfe;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .example-item .example-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .example-item .example-text {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        body.dark-mode .chart-container {
+            background: #2d3748;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chart-container h3 {
+            margin-bottom: 15px;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        body.dark-mode .chart-container h3 {
+            color: #e2e8f0;
+        }
+
+        .chart-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .result-section {
@@ -270,6 +506,12 @@
     </style>
 </head>
 <body>
+    <div class="dark-mode-toggle">
+        <span>🌙</span>
+        <div class="toggle-switch" onclick="toggleDarkMode()"></div>
+        <span>☀️</span>
+    </div>
+
     <div class="floating-particles">
         <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
         <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
@@ -289,12 +531,64 @@
         </div>
 
         <div class="content">
-            <div class="form-container">
-                <form method="post">
-                    <div class="input-group">
-                        <input type="text" name="question" placeholder="e.g. How many customers have churned this month?" required>
+            <div class="examples-section">
+                <div class="examples-header">
+                    <span class="icon">💡</span>
+                    Try these example queries
+                </div>
+                <div class="examples-grid">
+                    <div class="example-item" onclick="fillExample('How many customers are senior citizens?')">
+                        <div class="example-title">Senior Citizens</div>
+                        <div class="example-text">How many customers are senior citizens?</div>
                     </div>
-                    <input type="submit" value="🔍 Analyze Data">
+                    <div class="example-item" onclick="fillExample('What is the average tenure of customers who churned?')">
+                        <div class="example-title">Churned Customer Tenure</div>
+                        <div class="example-text">What is the average tenure of customers who churned?</div>
+                    </div>
+                    <div class="example-item" onclick="fillExample('How many customers are using fiber optic internet service?')">
+                        <div class="example-title">Fiber Optic Users</div>
+                        <div class="example-text">How many customers are using fiber optic internet service?</div>
+                    </div>
+                    <div class="example-item" onclick="fillExample('How many customers have both online security and online backup?')">
+                        <div class="example-title">Security & Backup</div>
+                        <div class="example-text">How many customers have both online security and online backup?</div>
+                    </div>
+                    <div class="example-item" onclick="fillExample('What is the total monthly revenue from customers with a two-year contract?')">
+                        <div class="example-title">Two-Year Contract Revenue</div>
+                        <div class="example-text">What is the total monthly revenue from customers with a two-year contract?</div>
+                    </div>
+                    <div class="example-item" onclick="fillExample('Show me customers with tenure greater than 60 months.')">
+                        <div class="example-title">Long-Term Customers</div>
+                        <div class="example-text">Show me customers with tenure greater than 60 months.</div>
+                    </div>
+                    <div class="example-item" onclick="fillExample('List customers who have no internet service and have churned.')">
+                        <div class="example-title">No Internet & Churned</div>
+                        <div class="example-text">List customers who have no internet service and have churned.</div>
+                    </div>
+                    <div class="example-item" onclick="fillExample('What is the average monthly charge for customers with paperless billing turned off?')">
+                        <div class="example-title">Non-Paperless Billing</div>
+                        <div class="example-text">What is the average monthly charge for customers with paperless billing turned off?</div>
+                    </div>
+                    <div class="example-item" onclick="fillExample('What payment methods are most used by customers who did not churn?')">
+                        <div class="example-title">Payment Methods</div>
+                        <div class="example-text">What payment methods are most used by customers who did not churn?</div>
+                    </div>
+                    <div class="example-item" onclick="fillExample('List all male customers who have dependents and have churned.')">
+                        <div class="example-title">Male Dependents Churned</div>
+                        <div class="example-text">List all male customers who have dependents and have churned.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <form method="post" onsubmit="showLoading()">
+                    <div class="input-group">
+                        <input type="text" name="question" id="questionInput" placeholder="e.g. How many customers are senior citizens?" required>
+                    </div>
+                    <button type="submit" id="submitBtn">
+                        <span class="loading-spinner"></span>
+                        🔍 Analyze Data
+                    </button>
                 </form>
             </div>
 
@@ -320,6 +614,14 @@
             </div>
             {% endif %}
 
+            <!-- Chart Display (if chart_url is provided from Flask) -->
+            {% if chart_url %}
+            <div class="chart-container">
+                <h3><span class="icon">📈</span> Data Visualization</h3>
+                <img src="{{ chart_url }}" alt="Data Chart" />
+            </div>
+            {% endif %}
+
             {% if answer %}
             <div class="answer-section">
                 <h3><span class="icon">🧠</span> AI Analysis</h3>
@@ -330,6 +632,37 @@
     </div>
 
     <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            const body = document.body;
+            const toggle = document.querySelector('.toggle-switch');
+
+            body.classList.toggle('dark-mode');
+            toggle.classList.toggle('active');
+        }
+
+        // Loading Spinner
+        function showLoading() {
+            const form = document.querySelector('form');
+            const submitBtn = document.getElementById('submitBtn');
+
+            form.classList.add('loading');
+            submitBtn.disabled = true;
+        }
+
+        // Fill example query
+        function fillExample(text) {
+            const input = document.getElementById('questionInput');
+            input.value = text;
+            input.focus();
+
+            // Add a nice animation
+            input.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                input.style.transform = 'scale(1)';
+            }, 200);
+        }
+
         function toggleCollapsible(element) {
             element.classList.toggle('active');
             const content = element.nextElementSibling;
@@ -357,14 +690,26 @@
 
         // Add input focus animation
         const input = document.querySelector('input[type="text"]');
-        input.addEventListener('focus', function() {
-            this.parentElement.style.transform = 'scale(1.02)';
-        });
+        if (input) {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
 
-        input.addEventListener('blur', function() {
-            this.parentElement.style.transform = 'scale(1)';
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        }
+
+        // Auto-hide loading on page load (in case form was submitted)
+        window.addEventListener('load', function() {
+            const form = document.querySelector('form');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (form && submitBtn) {
+                form.classList.remove('loading');
+                submitBtn.disabled = false;
+            }
         });
     </script>
 </body>
 </html>
-

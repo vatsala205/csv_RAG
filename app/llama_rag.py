@@ -69,7 +69,7 @@ def summarize_response(user_question, sql_query, result_rows):
     # Simple count or aggregate result
     if len(result_rows) == 1 and len(result_rows[0]) == 1:
         col, val = list(result_rows[0].items())[0]
-        return f"The answer to your question \"{user_question}\" is **{val}**."
+        return f"The answer to your question \"{user_question}\" is {val}."
 
     # If result is a list of similar entries (like filtering)
     if len(result_rows) <= 5:
